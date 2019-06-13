@@ -17,24 +17,33 @@ public class ConditionMapRepository implements ConditionRepository{
 		return json.getJSONForObject(conditionMap);
 	}
 
-	public String findCondition(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Condition findCondition(int id) {
+		return conditionMap.get(id);
 	}
 
-	public String createCondition(String conditionName) {
-		// TODO Auto-generated method stub
-		return null;
+	public String addCondition(String conditionName) {
+		Condition con1 = json.getObjectForJSON(conditionName, Condition.class);
+		conditionMap.put(conditionMap.size()+1, con1);
+		return "You have successfully added a condition";
 	}
 
 	public String deleteCondition(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		conditionMap.remove(id);
+		return "You have successfully deleted a condition";
 	}
 
 	public String updateCondition(int id, String conditionName) {
-		// TODO Auto-generated method stub
+		conditionMap.get(id).getConditionName() = conditionName;
 		return null;
 	}
+	
+	public Map<Integer, Condition> getConditionMap(){
+		return conditionMap;
+	}
 
+	@Override
+	public String toString() {
+		return "ConditionMapRepository [json=" + json + ", conditionMap=" + conditionMap + "]";
+	}
+	
 }
