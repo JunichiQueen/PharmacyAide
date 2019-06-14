@@ -8,21 +8,21 @@ import com.qa.util.JSONUtil;
 
 public class ConditionMapRepository implements ConditionRepository{
 	
-	JSONUtil json = new JSONUtil();
+	JSONUtil json;
 	
 	Map<Integer, Condition> conditionMap = new HashMap<Integer, Condition>();
 
 	public String getAllConditions() {
 		
-		return json.getJSONForObject(conditionMap);
+		return new JSONUtil().getJSONForObject(conditionMap);
 	}
 
-	public Condition findCondition(int id) {
-		return conditionMap.get(id);
+	public String findCondition(int id) {
+		return json.getJSONForObject(conditionMap.get(id));
 	}
 
 	public String addCondition(String conditionName) {
-		Condition con1 = json.getObjectForJSON(conditionName, Condition.class);
+		Condition con1 = new JSONUtil().getObjectForJSON(conditionName, Condition.class);
 		conditionMap.put(conditionMap.size()+1, con1);
 		return "You have successfully added a condition";
 	}
@@ -33,8 +33,9 @@ public class ConditionMapRepository implements ConditionRepository{
 	}
 
 	public String updateCondition(int id, String conditionName) {
-		conditionMap.get(id).getConditionName() = conditionName;
-		return null;
+		Condition newCondition = new JSONUtil().getObjectForJSON(conditionName, Condition.class);
+		conditionMap.put(id, newCondition);
+		return "You have successfully updated a condition";
 	}
 	
 	public Map<Integer, Condition> getConditionMap(){

@@ -68,9 +68,12 @@ public class ConditionMapTest {
 	public void updateCondition() {
 		Condition con1 = new Condition(1, "Salmonellosis");
 		Condition con2 = new Condition(2, "Flu");
+		Condition con3 = new Condition(1, "Headache");
+		String jsonString = json.getJSONForObject(con3);
 		conditionMapRepo.getConditionMap().put(1, con1);
 		conditionMapRepo.getConditionMap().put(2, con2);
-		conditionMapRepo.updateCondition(1, "Headache");
+		conditionMapRepo.updateCondition(1, jsonString);
+		//System.out.println(jsonString);
 		assertEquals("Headache", conditionMapRepo.getConditionMap().get(1).getConditionName());
 	}
 
