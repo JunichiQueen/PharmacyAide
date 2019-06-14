@@ -10,28 +10,28 @@ public class ConditionServiceImpl implements ConditionService{
 	ConditionRepository conRepo;
 
 	@Override
-	public String getAllAccounts() {
+	public String getAllConditions() {
 		
 		return conRepo.getAllConditions();
 	}
 
 	@Override
-	public String findAnAccount(int id) {
+	public String findACondition(int id) {
 		return conRepo.findCondition(id);
 	}
 
 	@Override
-	public String addAccount(String conditionName) {
+	public String addCondition(String conditionName) {
 		return conRepo.addCondition(conditionName);
 	}
 
 	@Override
-	public String deleteAccount(int id) {
+	public String deleteCondition(int id) {
 		return conRepo.deleteCondition(id);
 	}
 
 	@Override
-	public String updateAccount(int id, String conditionName) {
+	public String updateCondition(int id, String conditionName) {
 		return conRepo.updateCondition(id, conditionName);
 	}
 
