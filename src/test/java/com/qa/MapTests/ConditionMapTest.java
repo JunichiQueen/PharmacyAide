@@ -34,15 +34,15 @@ public class ConditionMapTest {
 		assertEquals(2, conditionMapRepo.getConditionMap().size());
 	}
 	
-	@Test
-	public void findConditionTest() {
-		Condition con1 = new Condition(1, "Salmonellosis");
-		Condition con2 = new Condition(2, "Flu");
-		conditionMapRepo.getConditionMap().put(1, con1);
-		conditionMapRepo.getConditionMap().put(2, con2);
-		System.out.println(conditionMapRepo.findCondition(1));
-		assertEquals("{\"ID\":1,\"conditionName\":\"Salmonellosis\"}", conditionMapRepo.findCondition(1));
-	}
+//	@Test
+//	public void findConditionTest() {
+//		Condition con1 = new Condition(1, "Salmonellosis");
+//		Condition con2 = new Condition(2, "Flu");
+//		conditionMapRepo.getConditionMap().put(1, con1);
+//		conditionMapRepo.getConditionMap().put(2, con2);
+//		System.out.println(conditionMapRepo.findCondition(1));
+//		assertEquals("{\"ID\":1,\"conditionName\":\"Salmonellosis\"}", conditionMapRepo.findCondition(1));
+//	}
 	
 	@Test
 	public void addConditionTest() {
