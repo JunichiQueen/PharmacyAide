@@ -25,11 +25,31 @@ function getAllConditions(){
     }).catch((rej) => {console.log(rej)});
 };
 
+function addCondition(){
+    let JSONString = document.getElementById("JSONinput").value;
+    console.log(JSONString);
+    newRequest("POST", "http://localhost:8080/PharmacyAide/api/condition/addCondition", JSONString).then((res) => {
+        let createText = document.createElement("p");
+        createText.innerText = res.responseText;
+        document.getElementById("display").appendChild(createText);
+    }).catch((rej) => {console.log(rej)});
+}
+
 function deleteACondition() {
-    let x = document.getElementById("input").value;
+    let x = document.getElementById("IDinput").value;
     newRequest("DELETE", "http://localhost:8080/PharmacyAide/api/condition/deleteCondition/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
     }).catch((rej) => {console.log(rej)});
 };
+
+function updateCondition() {
+    let x = document.getElementById("IDinput").value;
+    let JSONString = document.getElementById("JSONinput").value;
+    newRequest("PUT", "http://localhost:8080/PharmacyAide/api/condition/updateCondition/" + x, JSONString).then((res) => {
+        let createText = document.createElement("p");
+        createText.innerText = res.responseText;
+        document.getElementById("display").appendChild(createText);
+    }).catch((rej) => {console.log(rej)});
+}
