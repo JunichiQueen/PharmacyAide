@@ -3,9 +3,12 @@ package com.qa.persistence.repository;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.enterprise.inject.Alternative;
+
 import com.qa.persistence.domain.Condition;
 import com.qa.util.JSONUtil;
 
+@Alternative
 public class ConditionMapRepository implements ConditionRepository{
 	
 	JSONUtil json;
@@ -18,7 +21,7 @@ public class ConditionMapRepository implements ConditionRepository{
 	}
 
 	public String findCondition(int id) {
-		return json.getJSONForObject(conditionMap.get(id));
+		return new JSONUtil().getJSONForObject(conditionMap.get(id));
 	}
 
 	public String addCondition(String conditionName) {

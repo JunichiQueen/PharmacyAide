@@ -20,7 +20,7 @@ public class ConditionController {
 	@Path("getAllConditions")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllAccounts() {
+	public String getAllConditions() {
 		return conSer.getAllConditions();
 	}
 	

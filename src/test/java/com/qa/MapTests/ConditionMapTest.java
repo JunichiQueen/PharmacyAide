@@ -40,7 +40,8 @@ public class ConditionMapTest {
 		Condition con2 = new Condition(2, "Flu");
 		conditionMapRepo.getConditionMap().put(1, con1);
 		conditionMapRepo.getConditionMap().put(2, con2);
-		assertEquals(con1, conditionMapRepo.findCondition(1));
+		System.out.println(conditionMapRepo.findCondition(1));
+		assertEquals("{\"ID\":1,\"conditionName\":\"Salmonellosis\"}", conditionMapRepo.findCondition(1));
 	}
 	
 	@Test

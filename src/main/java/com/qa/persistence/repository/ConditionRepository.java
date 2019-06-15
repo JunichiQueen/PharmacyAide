@@ -1,7 +1,5 @@
 package com.qa.persistence.repository;
 
-import com.qa.persistence.domain.Condition;
-
 public interface ConditionRepository {
 	
 	String getAllConditions();
