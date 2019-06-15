@@ -1,9 +1,12 @@
 package com.qa.persistence.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Medicine {
@@ -13,6 +16,10 @@ public class Medicine {
 	private int id;
 	private String drugName;
 	private int stock;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="Condition_ID")
+	private Condition condition;
 	
 	public Medicine(int id, String drugName, int stock) {
 		this.id = id;
@@ -47,6 +54,8 @@ public class Medicine {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+	
 	
 	
 

@@ -1,13 +1,16 @@
 package com.qa.persistence.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Condition {
@@ -17,8 +20,8 @@ public class Condition {
 	private int ID;
 	private String conditionName;
 	
-	//@ManyToOne
-	//Set<Medicine> medicineList = new HashSet<Medicine>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condition", fetch = FetchType.EAGER, orphanRemoval = true)
+	List<Medicine> medicineList = new ArrayList<Medicine>();
 	
 	public Condition(int ID, String conditionName) {
 		this.ID = ID;
