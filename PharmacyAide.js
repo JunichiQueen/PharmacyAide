@@ -19,9 +19,42 @@ function newRequest(method, url, body) {
 
 function getAllConditions(){
     newRequest("GET", "http://localhost:8080/PharmacyAide/api/condition/getAllConditions").then((res) => {
-        let createText = document.createElement("p");
-        createText.innerText = res.responseText;
-        document.getElementById("display").appendChild(createText);
+        let resObj = JSON.parse(res.responseText);
+        let arrayLength = resObj.length;
+
+        let newTable = document.createElement("table");
+        newTable.className = "table table-bordered";
+        document.getElementById("display").appendChild(newTable);
+
+        let headerFlag = false;
+
+        for (let i=0; i<arrayLength; i++){
+
+            if (headerFlag == false){
+                let firstRow = document.createElement("tr");
+                let h1 = document.createElement("th");
+                h1.innerText = "ID";
+                let h2 = document.createElement("th");
+                h2.innerText = "Condition Name";
+                newTable.appendChild(firstRow);
+                firstRow.appendChild(h1);
+                firstRow.appendChild(h2);
+                headerFlag = true;
+            }
+            let newRow = document.createElement("tr");
+            
+
+            for (let prop in resObj[i]){
+                let newCell = document.createElement("td");
+                let text1 = document.createTextNode(resObj[i][prop]);
+                newCell.appendChild(text1);
+                newRow.appendChild(newCell);
+
+            }
+            
+            newTable.appendChild(newRow);
+        }
+
     }).catch((rej) => {console.log(rej)});
 };
 

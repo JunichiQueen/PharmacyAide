@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,7 +22,7 @@ public class Condition {
 	private String conditionName;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condition", fetch = FetchType.EAGER, orphanRemoval = true)
-	List<Medicine> medicineList = new ArrayList<Medicine>();
+	List<Medicine> medicineList = new ArrayList<>();
 	
 	public Condition(int ID, String conditionName) {
 		this.ID = ID;
@@ -46,6 +47,14 @@ public class Condition {
 
 	public void setConditionName(String conditionName) {
 		this.conditionName = conditionName;
+	}
+
+	public List<Medicine> getMedicineList() {
+		return medicineList;
+	}
+
+	public void setMedicineList(List<Medicine> medicineList) {
+		this.medicineList = medicineList;
 	}
 	
 

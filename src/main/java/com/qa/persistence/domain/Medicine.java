@@ -18,7 +18,7 @@ public class Medicine {
 	private int stock;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="Condition_ID")
+	@JoinColumn(name="condition_id")
 	private Condition condition;
 	
 	public Medicine(int id, String drugName, int stock) {
@@ -53,6 +53,14 @@ public class Medicine {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public Condition getCondition() {
+		return condition;
+	}
+
+	public void setCondition(Condition condition) {
+		this.condition = condition;
 	}
 
 	
