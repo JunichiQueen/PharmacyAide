@@ -6,17 +6,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.qa.persistence.domain.Condition;
+import com.qa.persistence.domain.Medicine;
 import com.qa.persistence.repository.ConditionMapRepository;
+import com.qa.persistence.repository.MedicineMapRepository;
 import com.qa.util.JSONUtil;
 
 public class ConditionMapTest {
 	
 	ConditionMapRepository conditionMapRepo;
+	MedicineMapRepository medicineMapRepo;
 	JSONUtil json;
 	
 	@Before
 	public void setup() {
 		conditionMapRepo = new ConditionMapRepository();
+		medicineMapRepo = new MedicineMapRepository();
 		json = new JSONUtil();
 	}
 	
@@ -76,6 +80,65 @@ public class ConditionMapTest {
 		conditionMapRepo.updateCondition(1, jsonString);
 		//System.out.println(jsonString);
 		assertEquals("Headache", conditionMapRepo.getConditionMap().get(1).getConditionName());
+	}
+	
+	@Test
+	public void getAllMedicinesTest() {
+		assertEquals("{}", medicineMapRepo.getAllMedicines());
+	}
+	
+	@Test
+	public void getAllMedicinesTest2() {
+		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+		Medicine med2 = new Medicine(2, "Lemsip", 45);
+		medicineMapRepo.getMedicineMap().put(1, med1);
+		medicineMapRepo.getMedicineMap().put(2, med2);
+		assertEquals(2, medicineMapRepo.getMedicineMap().size());
+	}
+	
+	@Test
+	public void findMedicineTest() {
+		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+		Medicine med2 = new Medicine(2, "Lemsip", 45);
+		medicineMapRepo.getMedicineMap().put(1, med1);
+		medicineMapRepo.getMedicineMap().put(2, med2);
+		//System.out.println(medicineMapRepo.findMedicine(1));
+		assertEquals("{\"id\":1,\"drugName\":\"Paracetamol\",\"stock\":30}", medicineMapRepo.findMedicine(1));
+	}
+	
+	@Test
+	public void addMedicineTest() {
+		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+		String drugString = json.getJSONForObject(med1);
+		//System.out.println(drugString);
+		medicineMapRepo.addMedicine(drugString);
+		assertEquals(1, medicineMapRepo.getMedicineMap().size());
+		assertEquals("You have successfully added a drug", medicineMapRepo.addMedicine(drugString));
+		
+	}
+	
+	@Test
+	public void deleteMedicineTest() {
+		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+		Medicine med2 = new Medicine(2, "Lemsip", 45);
+		medicineMapRepo.getMedicineMap().put(1, med1);
+		medicineMapRepo.getMedicineMap().put(2, med2);
+		medicineMapRepo.deleteMedicine(1);
+		assertEquals(1, medicineMapRepo.getMedicineMap().size());
+		assertEquals("You have successfully deleted a drug", medicineMapRepo.deleteMedicine(1));
+	}
+	
+	@Test
+	public void updateMedicineTest() {
+		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+		Medicine med2 = new Medicine(2, "Lemsip", 45);
+		Medicine med3 = new Medicine(1, "Aspirin", 80);
+		String medString = new JSONUtil().getJSONForObject(med3);
+		medicineMapRepo.getMedicineMap().put(1, med1);
+		medicineMapRepo.getMedicineMap().put(2, med2);
+		medicineMapRepo.updateMedicine(1, medString);
+		assertEquals("Aspirin", medicineMapRepo.getMedicineMap().get(1).getDrugName());
+		
 	}
 
 	
