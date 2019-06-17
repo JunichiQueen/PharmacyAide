@@ -17,8 +17,9 @@ function newRequest(method, url, body) {
     );
 };
 
-function getAllConditions(){
-    newRequest("GET", "http://localhost:8080/PharmacyAide/api/condition/getAllConditions").then((res) => {
+
+function getAllMedicines(){
+    newRequest("GET", "http://localhost:8080/PharmacyAide/api/medicine/getAllMedicines").then((res) => {
         let resObj = JSON.parse(res.responseText);
         let arrayLength = resObj.length;
 
@@ -35,10 +36,13 @@ function getAllConditions(){
                 let h1 = document.createElement("th");
                 h1.innerText = "ID";
                 let h2 = document.createElement("th");
-                h2.innerText = "Condition Name";
+                h2.innerText = "Medicine Name";
+                let h3 = document.createElement("th");
+                h3.innerText = "Stock";
                 newTable.appendChild(firstRow);
                 firstRow.appendChild(h1);
                 firstRow.appendChild(h2);
+                firstRow.appendChild(h3);
                 headerFlag = true;
             }
             let newRow = document.createElement("tr");
@@ -56,35 +60,33 @@ function getAllConditions(){
         }
 
     }).catch((rej) => {console.log(rej)});
-};
+}
 
-function addCondition(){
+function addMedicine(){
     let JSONString = document.getElementById("JSONinput").value;
     console.log(JSONString);
-    newRequest("POST", "http://localhost:8080/PharmacyAide/api/condition/addCondition", JSONString).then((res) => {
+    newRequest("POST", "http://localhost:8080/PharmacyAide/api/medicine/addMedicine", JSONString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
     }).catch((rej) => {console.log(rej)});
 }
 
-function deleteACondition() {
+function deleteMedicine() {
     let x = document.getElementById("IDinput").value;
-    newRequest("DELETE", "http://localhost:8080/PharmacyAide/api/condition/deleteCondition/" + x).then((res) => {
+    newRequest("DELETE", "http://localhost:8080/PharmacyAide/api/medicine/deleteMedicine/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
     }).catch((rej) => {console.log(rej)});
 };
 
-function updateCondition() {
+function updateMedicine() {
     let x = document.getElementById("IDinput").value;
     let JSONString = document.getElementById("JSONinput").value;
-    newRequest("PUT", "http://localhost:8080/PharmacyAide/api/condition/updateCondition/" + x, JSONString).then((res) => {
+    newRequest("PUT", "http://localhost:8080/PharmacyAide/api/medicine/updateMedicine/" + x, JSONString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
     }).catch((rej) => {console.log(rej)});
 }
-
-

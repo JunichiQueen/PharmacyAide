@@ -21,7 +21,7 @@ public class Condition {
 	private int ID;
 	private String conditionName;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condition", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	List<Medicine> medicineList = new ArrayList<>();
 	
 	public Condition(int ID, String conditionName) {

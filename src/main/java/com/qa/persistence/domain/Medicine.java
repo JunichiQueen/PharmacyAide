@@ -8,18 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class Medicine {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
 	private int id;
 	private String drugName;
 	private int stock;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="condition_id")
-	private Condition condition;
 	
 	public Medicine(int id, String drugName, int stock) {
 		this.id = id;
@@ -55,13 +55,6 @@ public class Medicine {
 		this.stock = stock;
 	}
 
-	public Condition getCondition() {
-		return condition;
-	}
-
-	public void setCondition(Condition condition) {
-		this.condition = condition;
-	}
 
 	
 	
