@@ -11,7 +11,6 @@ public class ConditionServiceImpl implements ConditionService{
 
 	@Override
 	public String getAllConditions() {
-		
 		return conRepo.getAllConditions();
 	}
 
