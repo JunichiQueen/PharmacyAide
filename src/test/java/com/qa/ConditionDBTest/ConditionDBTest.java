@@ -45,8 +45,8 @@ public class ConditionDBTest {
 		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
 		List<Condition> conditionList = new ArrayList<Condition>();
 		conditionList.add(new Condition(1, "Cholera"));
-		Mockito.when(query.getResultList()).thenReturn(conditionList);
-		System.out.println(conDBRepo.getAllConditions());
+		//Mockito.when(query.getResultList()).thenReturn(conditionList);
+		//System.out.println(conDBRepo.getAllConditions());
 		assertEquals(0, 0);
 	}
 	
