@@ -18,12 +18,12 @@ import java.util.Collection;
 @Default
 @Transactional(SUPPORTS)
 public class MedicineDBRepository implements MedicineRepository {
-	
+
 	@Inject
-	JSONUtil json;
-	
-	@PersistenceContext( unitName = "primary")
-	EntityManager manager;
+	private JSONUtil json;
+
+	@PersistenceContext(unitName = "primary")
+	private EntityManager manager;
 
 	@Override
 	public String getAllMedicines() {
@@ -57,11 +57,27 @@ public class MedicineDBRepository implements MedicineRepository {
 	public String updateMedicine(int id, String drugName) {
 		Medicine newMedicine = json.getObjectForJSON(drugName, Medicine.class);
 		Medicine oldMedicine = manager.find(Medicine.class, id);
-		if(oldMedicine != null) {
+		if (oldMedicine != null) {
 			oldMedicine.setDrugName(newMedicine.getDrugName());
 			manager.persist(oldMedicine);
 		}
 		return "You have successfully updated a drug";
+	}
+
+	public JSONUtil getJson() {
+		return json;
+	}
+
+	public void setJson(JSONUtil json) {
+		this.json = json;
+	}
+
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
 	}
 
 }

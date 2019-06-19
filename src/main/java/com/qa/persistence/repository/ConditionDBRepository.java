@@ -19,15 +19,18 @@ import com.qa.util.JSONUtil;
 public class ConditionDBRepository implements ConditionRepository{
 	
 	@Inject
-	JSONUtil json;
+	private JSONUtil json;
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 	
 	@Override
 	public String getAllConditions() {
+		
 		Query query = manager.createQuery("SELECT c FROM Condition c");
+		
 		Collection<Condition> conditions = (Collection<Condition>) query.getResultList();
+		
 		return json.getJSONForObject(conditions);
 	}
 
@@ -62,6 +65,22 @@ public class ConditionDBRepository implements ConditionRepository{
 		}
 		
 		return "You have successfully updated a condition";
+	}
+
+	public JSONUtil getJson() {
+		return json;
+	}
+
+	public void setJson(JSONUtil json) {
+		this.json = json;
+	}
+
+	public EntityManager getManager() {
+		return manager;
+	}
+
+	public void setManager(EntityManager manager) {
+		this.manager = manager;
 	}
 
 }

@@ -22,33 +22,76 @@ import com.qa.util.JSONUtil;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ConditionDBTest {
-	
+
 	@InjectMocks
 	private ConditionDBRepository conDBRepo;
-	
+
 	@Mock
 	private EntityManager manager;
-	
+
 	@Mock
-	private JSONUtil json;
 	private Query query;
 	
+	@Mock
+	private Condition condition;
+
+	private JSONUtil json;
 	
+	private static final String MOCK_ARRAY = "[{\"ID\":1,\"conditionName\":\"Cholera\",\"medicineList\":[]}]";
+	
+	private static final String MOCK_OBJECT = "{\"ID\":1,\"conditionName\":\"Cholera\",\"medicineList\":[]}";
+
 	@Before
 	public void setup() {
-		conDBRepo = new ConditionDBRepository();
+		conDBRepo.setManager(manager);
 		json = new JSONUtil();
+		conDBRepo.setJson(json);
+	}
+
+	@Test
+	public void getAllConditionsDBTest() {
+		
+		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+		
+		List<Condition> conditionList = new ArrayList<Condition>();
+		
+		conditionList.add(new Condition(1, "Cholera"));
+		
+		Mockito.when(query.getResultList()).thenReturn(conditionList);
+		
+		//System.out.println(conDBRepo.getAllConditions());
+		
+		assertEquals(MOCK_ARRAY, conDBRepo.getAllConditions());
 	}
 	
 	@Test
-	public void getAllConditionsDBTest() {
-		Mockito.when(manager.createQuery(Mockito.anyString())).thenReturn(query);
+	public void findConditionDBTest() {
+		
 		List<Condition> conditionList = new ArrayList<Condition>();
+
 		conditionList.add(new Condition(1, "Cholera"));
-		//Mockito.when(query.getResultList()).thenReturn(conditionList);
-		//System.out.println(conDBRepo.getAllConditions());
-		assertEquals(0, 0);
+		Mockito.when(manager.find(Condition.class, 1)).thenReturn(conditionList.get(0));
+		assertEquals(MOCK_OBJECT, conDBRepo.findCondition(1));
+	}
+
+	@Test
+	public void addConditionDBTest() {
+		
+		String reply = conDBRepo.addCondition(MOCK_OBJECT);
+		assertEquals("You have successfully added a condition", reply);
+		
 	}
 	
+	@Test
+	public void deleteConditionDBTest() {
+		 String reply = conDBRepo.deleteCondition(1);
+		 assertEquals("You have successfully deleted a condition", reply);
+	}
+	
+	@Test
+	public void updateCondition() {
+		String reply = conDBRepo.updateCondition(1, "{ conditionName : Pertussis }");
+		assertEquals("You have successfully updated a condition", reply);
+	}
 
 }
