@@ -18,7 +18,7 @@ function newRequest(method, url, body) {
 };
 
 function getAllConditions(){
-    newRequest("GET", "http://localhost:8080/PharmacyAide/api/condition/getAllConditions").then((res) => {
+    newRequest("GET", "http://35.246.8.5:8888/PharmacyAide/api/condition/getAllConditions").then((res) => {
         let resObj = JSON.parse(res.responseText);
         let arrayLength = resObj.length;
 
@@ -61,7 +61,7 @@ function getAllConditions(){
 function addCondition(){
     let JSONString = document.getElementById("JSONinput").value;
     console.log(JSONString);
-    newRequest("POST", "http://localhost:8080/PharmacyAide/api/condition/addCondition", JSONString).then((res) => {
+    newRequest("POST", "http://35.246.8.5:8888/PharmacyAide/api/condition/addCondition", JSONString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -70,7 +70,7 @@ function addCondition(){
 
 function deleteACondition() {
     let x = document.getElementById("IDinput").value;
-    newRequest("DELETE", "http://localhost:8080/PharmacyAide/api/condition/deleteCondition/" + x).then((res) => {
+    newRequest("DELETE", "http://35.246.8.5:8888/PharmacyAide/api/condition/deleteCondition/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -80,7 +80,7 @@ function deleteACondition() {
 function updateCondition() {
     let x = document.getElementById("IDinput").value;
     let JSONString = document.getElementById("JSONinput").value;
-    newRequest("PUT", "http://localhost:8080/PharmacyAide/api/condition/updateCondition/" + x, JSONString).then((res) => {
+    newRequest("PUT", "http://35.246.8.5:8888/PharmacyAide/api/condition/updateCondition/" + x, JSONString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
