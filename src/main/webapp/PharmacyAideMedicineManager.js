@@ -19,7 +19,7 @@ function newRequest(method, url, body) {
 
 
 function getAllMedicines(){
-    newRequest("GET", "http://35.246.8.5:8888/PharmacyAide/api/medicine/getAllMedicines").then((res) => {
+    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/medicine/getAllMedicines").then((res) => {
         let resObj = JSON.parse(res.responseText);
         let arrayLength = resObj.length;
 
@@ -63,9 +63,10 @@ function getAllMedicines(){
 }
 
 function addMedicine(){
-    let JSONString = document.getElementById("JSONinput").value;
+    let drugName = document.getElementById("druginput").value;
+    let newString = " {drugName:" + drugName + "}";
     console.log(JSONString);
-    newRequest("POST", "http://35.246.8.5:8888/PharmacyAide/api/medicine/addMedicine", JSONString).then((res) => {
+    newRequest("POST", "http://35.232.167.206:8888/PharmacyAide/api/medicine/addMedicine", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -74,7 +75,7 @@ function addMedicine(){
 
 function deleteMedicine() {
     let x = document.getElementById("IDinput").value;
-    newRequest("DELETE", "http://35.246.8.5:8888/PharmacyAide/api/medicine/deleteMedicine/" + x).then((res) => {
+    newRequest("DELETE", "http://35.232.167.206:8888/PharmacyAide/api/medicine/deleteMedicine/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -83,8 +84,9 @@ function deleteMedicine() {
 
 function updateMedicine() {
     let x = document.getElementById("IDinput").value;
-    let JSONString = document.getElementById("JSONinput").value;
-    newRequest("PUT", "http://35.246.8.5:8888/PharmacyAide/api/medicine/updateMedicine/" + x, JSONString).then((res) => {
+    let drugName = document.getElementById("druginput").value;
+    let newString = " {drugName:" + drugName + "}";
+    newRequest("PUT", "http://35.232.167.206:8888/PharmacyAide/api/medicine/updateMedicine/" + x, newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);

@@ -23,6 +23,11 @@ public class ConditionMapRepository implements ConditionRepository{
 	public String findCondition(int id) {
 		return new JSONUtil().getJSONForObject(conditionMap.get(id));
 	}
+	
+//	@Override
+//	public String findConditionByName(String conditionName) {
+//		return new JSONUtil().getJSONForObject(conditionMap.get(conditionMap.containsValue(conditionName)));
+//	}
 
 	public String addCondition(String conditionName) {
 		Condition con1 = new JSONUtil().getObjectForJSON(conditionName, Condition.class);
@@ -49,5 +54,7 @@ public class ConditionMapRepository implements ConditionRepository{
 	public String toString() {
 		return "ConditionMapRepository [json=" + json + ", conditionMap=" + conditionMap + "]";
 	}
+
+	
 	
 }

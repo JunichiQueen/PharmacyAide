@@ -31,6 +31,13 @@ public class ConditionController {
 		return conSer.findACondition(id);
 	}
 	
+//	@Path("findConditionByName/{conditionName}")
+//	@GET
+//	@Produces({ "application/json" })
+//	public String findConditionByName(@PathParam("conditionName") String conditionName) {
+//		return conSer.findConditionByName(conditionName);
+//	}
+	
 	@Path("addCondition")
 	@POST
 	@Produces({ "application/json" })

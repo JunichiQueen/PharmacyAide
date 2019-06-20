@@ -18,6 +18,11 @@ public class ConditionServiceImpl implements ConditionService{
 	public String findACondition(int id) {
 		return conRepo.findCondition(id);
 	}
+	
+//	@Override
+//	public String findConditionByName(String conditionName) {
+//		return conRepo.findConditionByName(conditionName);
+//	}
 
 	@Override
 	public String addCondition(String conditionName) {

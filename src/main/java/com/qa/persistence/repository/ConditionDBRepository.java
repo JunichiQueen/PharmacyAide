@@ -26,7 +26,6 @@ public class ConditionDBRepository implements ConditionRepository{
 	
 	@Override
 	public String getAllConditions() {
-		
 		Query query = manager.createQuery("SELECT c FROM Condition c");
 		
 		Collection<Condition> conditions = (Collection<Condition>) query.getResultList();
@@ -39,10 +38,12 @@ public class ConditionDBRepository implements ConditionRepository{
 		return json.getJSONForObject(manager.find(Condition.class, id));
 	}
 	
-	public String findConditionByName(String conditionName) {
-		 Condition findConditionName = manager.find(Condition.class, manager.contains(conditionName));
-		 return json.getJSONForObject(findConditionName);
-	}
+//	@Override
+//	public String findConditionByName(String conditionName) {
+//		Query query = manager.createQuery("SELECT c FROM Condition c WHERE c.conditionName = :" + conditionName + "");
+//		Collection<Condition> conditions = (Collection<Condition>) query.getResultList();
+//		return json.getJSONForObject(conditions);
+//	}
 		 
 	@Override
 	@Transactional(REQUIRED)
