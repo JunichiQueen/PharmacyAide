@@ -65,7 +65,6 @@ function getAllMedicines(){
 function addMedicine(){
     let drugName = document.getElementById("druginput").value;
     let newString = " {drugName:" + drugName + "}";
-    console.log(JSONString);
     newRequest("POST", "http://35.232.167.206:8888/PharmacyAide/api/medicine/addMedicine", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;

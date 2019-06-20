@@ -61,7 +61,6 @@ function getAllConditions(){
 function addCondition(){
     let JSONString = document.getElementById("Conditioninput").value;
     let newString = " {conditionName:" + JSONString + "}";
-    console.log(newString);
     newRequest("POST", "http://35.232.167.206:8888/PharmacyAide/api/condition/addCondition", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
