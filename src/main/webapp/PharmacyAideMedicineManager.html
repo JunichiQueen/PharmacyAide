@@ -5,13 +5,20 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     </head>
-    <body>
-        <h3>ID: <input id = "IDinput" type = "text" placeholder = "Enter ID"></input></h3>
-        <h3>Drug: <input id = "druginput" type = "text" placeholder = "Enter Drug Name"></input></h3>
-        <button onclick="getAllMedicines()">Display All Drugs</button>
-        <button onclick = "addMedicine()" class = "btn btn-outline-dark">Add Drug</button>
-        <button onclick = "deleteMedicine()" class = "btn btn-outline-danger">Delete Drug</button>
-        <button onclick = "updateMedicine()" class = "btn btn-outline-warning">Update Drug</button>
+    <body class = "bg-light">
+        <div class = "page-header">
+                <h2 class = "text-center">Medicine Manager</h2>
+                <hr class="my-4">
+        </div>
+
+        <div class="jumbotron bg-secondary">
+            <h3>ID: <input id = "IDinput" type = "text" placeholder = "Enter ID"></input></h3>
+            <h3>Drug: <input id = "druginput" type = "text" placeholder = "Enter Drug Name"></input></h3>
+            <button onclick="getAllMedicines()">Display All Drugs</button>
+            <button onclick = "addMedicine()" class = "btn btn-outline-dark">Add Drug</button>
+            <button onclick = "deleteMedicine()" class = "btn btn-outline-danger">Delete Drug</button>
+            <button onclick = "updateMedicine()" class = "btn btn-outline-warning">Update Drug</button>
+        </div>
 
 
 
