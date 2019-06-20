@@ -60,8 +60,9 @@ function getAllConditions(){
 
 function addCondition(){
     let JSONString = document.getElementById("JSONinput").value;
-    console.log(JSONString);
-    newRequest("POST", "http://35.246.8.5:8888/PharmacyAide/api/condition/addCondition", JSONString).then((res) => {
+    let newString = " {conditionName:" + JSONString + "}";
+    console.log(newString);
+    newRequest("POST", "http://35.246.8.5:8888/PharmacyAide/api/condition/addCondition", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -80,7 +81,8 @@ function deleteACondition() {
 function updateCondition() {
     let x = document.getElementById("IDinput").value;
     let JSONString = document.getElementById("JSONinput").value;
-    newRequest("PUT", "http://35.246.8.5:8888/PharmacyAide/api/condition/updateCondition/" + x, JSONString).then((res) => {
+    let newString = " {conditionName:" + JSONString + "}";
+    newRequest("PUT", "http://35.246.8.5:8888/PharmacyAide/api/condition/updateCondition/" + x, newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);

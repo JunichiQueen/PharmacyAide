@@ -93,5 +93,6 @@ public class ConditionDBTest {
 		String reply = conDBRepo.updateCondition(1, "{ conditionName : Pertussis }");
 		assertEquals("You have successfully updated a condition", reply);
 	}
+	
 
 }

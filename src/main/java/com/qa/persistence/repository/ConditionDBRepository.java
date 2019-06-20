@@ -39,6 +39,7 @@ public class ConditionDBRepository implements ConditionRepository{
 		return json.getJSONForObject(manager.find(Condition.class, id));
 	}
 	
+	
 	@Override
 	@Transactional(REQUIRED)
 	public String addCondition(String conditionName) {
