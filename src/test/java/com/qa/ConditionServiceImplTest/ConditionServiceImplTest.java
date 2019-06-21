@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.persistence.domain.Condition;
@@ -29,7 +30,9 @@ public class ConditionServiceImplTest {
 		List<Condition> conditionList = new ArrayList<Condition>();
 		
 		conditionList.add(new Condition(1, "Cholera"));
+		//Mockito.when(conSerImpl.getAllConditions()).thenReturn(value)
 		System.out.println(conditionList);
+		//assertEquals(0, conSerImpl.getAllConditions());
 		assertEquals(0, 0);
 	}
 

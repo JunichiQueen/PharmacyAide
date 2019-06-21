@@ -6,6 +6,11 @@ pipeline{
                                 sh "mvn clean"
                         }
                 }
+		stage('---setup---'){
+                        steps{
+                                sh "sudo rm -rf /var/lib/wildfly-10.1.0.Final/standalone/deployments/*"
+                        }
+                }
                 stage('--test--'){
                         steps{
                                 sh "mvn test"
@@ -31,7 +36,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
-				sh "sudo cp target/PharmacyAide.war /home/junichim/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo cp target/PharmacyAide.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
         }
