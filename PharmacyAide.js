@@ -46,7 +46,7 @@ function getAllConditions(){
 
             for (let prop in resObj[i]){
                 let newCell = document.createElement("td");
-                let text1 = document.createTextNode(resObj[i][prop]);
+                let text1 = document.createTextNode(JSON.stringify(resObj[i][prop]));
                 newCell.appendChild(text1);
                 newRow.appendChild(newCell);
 
@@ -60,8 +60,9 @@ function getAllConditions(){
 
 function addCondition(){
     let JSONString = document.getElementById("JSONinput").value;
-    console.log(JSONString);
-    newRequest("POST", "http://localhost:8080/PharmacyAide/api/condition/addCondition", JSONString).then((res) => {
+    let newString = " {conditionName:" + JSONString + "}";
+    console.log(newString);
+    newRequest("POST", "http://localhost:8080/PharmacyAide/api/condition/addCondition", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);

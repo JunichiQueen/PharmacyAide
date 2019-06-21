@@ -10,16 +10,17 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Medicine {
-	
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String drugName;
 	private int stock;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="condition_id")
-	private Condition condition;
+//	@ManyToOne
+//	@JoinColumn( name = "condition_id")
+//	private Condition condition;
+	
 	
 	public Medicine(int id, String drugName, int stock) {
 		this.id = id;
@@ -27,6 +28,16 @@ public class Medicine {
 		this.stock = stock;
 	}
 	
+//	public Medicine(int id, String drugName, int stock, Condition condition) {
+//		super();
+//		this.id = id;
+//		this.drugName = drugName;
+//		this.stock = stock;
+//		this.condition = condition;
+//	}
+	
+
+
 	public Medicine() {
 		
 	}
@@ -53,14 +64,6 @@ public class Medicine {
 
 	public void setStock(int stock) {
 		this.stock = stock;
-	}
-
-	public Condition getCondition() {
-		return condition;
-	}
-
-	public void setCondition(Condition condition) {
-		this.condition = condition;
 	}
 
 	

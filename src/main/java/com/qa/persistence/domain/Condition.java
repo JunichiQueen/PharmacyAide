@@ -21,12 +21,19 @@ public class Condition {
 	private int ID;
 	private String conditionName;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condition", fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToMany(targetEntity = Medicine.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	List<Medicine> medicineList = new ArrayList<>();
 	
 	public Condition(int ID, String conditionName) {
 		this.ID = ID;
 		this.conditionName = conditionName;
+	}
+	
+	public Condition(int iD, String conditionName, List<Medicine> medicineList) {
+		super();
+		ID = iD;
+		this.conditionName = conditionName;
+		this.medicineList = medicineList;
 	}
 	
 	public Condition() {
