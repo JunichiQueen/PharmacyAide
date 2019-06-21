@@ -80,7 +80,7 @@ function findACondition(){
                 let h2 = document.createElement("th");
                 h2.innerText = "Condition Name";
                 let h3 = document.createElement("th");
-                h3.innerText = "Medicine Info"
+                h3.innerText = "Medicine Info";
                 newTable.appendChild(firstRow);
                 firstRow.appendChild(h1);
                 firstRow.appendChild(h2);
@@ -89,7 +89,7 @@ function findACondition(){
             }
             let newRow = document.createElement("tr");
             let newCell = document.createElement("td");
-            let text1 = document.createTextNode(resObj[prop]);
+            let text1 = document.createTextNode(JSON.stringify(resObj[prop]));
             newCell.appendChild(text1);
             newRow.appendChild(newCell);
         }

@@ -65,9 +65,37 @@ function getAllMedicines(){
 function findAMedicine(){
     let x = document.getElementById("IDinput").value;
     newRequest("GET", "http://35.222.149.127:8888/PharmacyAide/api/medicine/findAMedicine/" + x).then((res) => {
-        let createText = document.createElement("p");
-        createText.innerText = res.responseText;
-        document.getElementById("display").appendChild(createText);
+        let resObj = JSON.parse(res.responseText);
+
+        let newTable = document.createElement("table");
+        newTable.className = "table table-bordered";
+        document.getElementById("display").appendChild(newTable);
+
+        let headerFlag = false;
+
+        for (let prop in resObj){
+            if (headerFlag == false){
+                let firstRow = document.createElement("tr");
+                let h1 = document.createElement("th");
+                h1.innerText = "ID";
+                let h2 = document.createElement("th");
+                h2.innerText = "Medicine Name";
+                let h3 = document.createElement("th");
+                h3.innerText = "Stock";
+                newTable.appendChild(firstRow);
+                firstRow.appendChild(h1);
+                firstRow.appendChild(h2);
+                firstRow.appendChild(h3);
+                headerFlag = true;
+            }
+            let newRow = document.createElement("tr");
+            let newCell = document.createElement("td");
+            let text1 = document.createTextNode(resObj[prop]);
+            newCell.appendChild(text1);
+            newRow.appendChild(newCell);
+        }
+        newTable.appendChild(newRow);
+
     }).catch((rej) => {console.log(rej)});
 }
 
