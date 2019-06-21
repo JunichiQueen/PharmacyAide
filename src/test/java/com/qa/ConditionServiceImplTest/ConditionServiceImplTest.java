@@ -34,7 +34,6 @@ public class ConditionServiceImplTest {
 		System.out.println(conditionList);
 		//assertEquals(0, conSerImpl.getAllConditions());
 		assertEquals(0, 0);
-		assertEquals(0, 0);
 	}
 
 }
