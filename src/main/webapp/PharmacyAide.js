@@ -64,11 +64,39 @@ function getAllConditions(){
 function findACondition(){
     let x = document.getElementById("IDinput").value;
     newRequest("GET", "http://35.222.149.127:8888/PharmacyAide/api/condition/findACondition/" + x).then((res) => {
-        let createText = document.createElement("p");
-        createText.innerText = res.responseText;
-        document.getElementById("display").appendChild(createText);
+        let resObj = JSON.parse(res.responseText);
+
+        let newTable = document.createElement("table");
+        newTable.className = "table table-bordered";
+        document.getElementById("display").appendChild(newTable);
+
+        let headerFlag = false;
+
+        for (let prop in resObj[i]){
+            if (headerFlag == false){
+                let firstRow = document.createElement("tr");
+                let h1 = document.createElement("th");
+                h1.innerText = "ID";
+                let h2 = document.createElement("th");
+                h2.innerText = "Condition Name";
+                let h3 = document.createElement("th");
+                h3.innerText = "Medicine Info"
+                newTable.appendChild(firstRow);
+                firstRow.appendChild(h1);
+                firstRow.appendChild(h2);
+                firstRow.appendChild(h3);
+                headerFlag = true;
+            }
+            let newRow = document.createElement("tr");
+            let newCell = document.createElement("td");
+            let text1 = document.createTextNode(resObj[i][prop]);
+            newCell.appendChild(text1);
+            newRow.appendChild(newCell);
+        }
+        newTable.appendChild(newRow);
+
     }).catch((rej) => {console.log(rej)});
-}
+};
 
 function addCondition(){
     let JSONString = document.getElementById("Conditioninput").value;
@@ -78,7 +106,7 @@ function addCondition(){
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
     }).catch((rej) => {console.log(rej)});
-}
+};
 
 function deleteACondition() {
     let x = document.getElementById("IDinput").value;
@@ -98,6 +126,6 @@ function updateCondition() {
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
     }).catch((rej) => {console.log(rej)});
-}
+};
 
 
