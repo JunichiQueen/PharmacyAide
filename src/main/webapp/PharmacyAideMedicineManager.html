@@ -12,13 +12,24 @@
         </div>
 
         <div class="jumbotron bg-secondary">
-            <h3>ID: <input id = "IDinput" type = "text" placeholder = "Enter ID"></input></h3>
+            <p>Manage Conditions.</p>
+            <h3>ID: <input id = "conIDinput" type = "text" placeholder = "Enter ID"></input></h3>
+            <h3>Condition: <input id = "Conditioninput" type = "text" placeholder = "Enter Condition Name"></input></h3>          
+            <button onclick = "addCondition()" class = "btn btn-outline-dark">Add Condition</button>
+            <button onclick = "deleteACondition()" class = "btn btn-outline-danger">Delete Condition</button>
+            <button onclick = "updateCondition()" class = "btn btn-outline-warning">Update Condition</button>
+            
+            
+        </div>
+
+        <div class="jumbotron bg-secondary">
+            <p>Manage Medicines.</p>
+            <h3>ID: <input id = "medIDinput" type = "text" placeholder = "Enter ID"></input></h3>
             <h3>Drug: <input id = "druginput" type = "text" placeholder = "Enter Drug Name"></input></h3>
-            <button onclick="getAllMedicines()" class = "btn btn-outline-success">Display All Drugs</button>
-            <button onclick="findAMedicine()" class = "btn btn-outline-success">Display A Drug</button>
             <button onclick = "addMedicine()" class = "btn btn-outline-dark">Add Drug</button>
             <button onclick = "deleteMedicine()" class = "btn btn-outline-danger">Delete Drug</button>
             <button onclick = "updateMedicine()" class = "btn btn-outline-warning">Update Drug</button>
+
         </div>
 
 
