@@ -72,6 +72,8 @@ function findACondition(){
 
         let headerFlag = false;
 
+        let newRow = document.createElement("tr");
+
         for (let prop in resObj){
             if (headerFlag == false){
                 let firstRow = document.createElement("tr");
@@ -87,14 +89,14 @@ function findACondition(){
                 firstRow.appendChild(h3);
                 headerFlag = true;
             }
-            let newRow = document.createElement("tr");
+            
             let newCell = document.createElement("td");
             let text1 = document.createTextNode(JSON.stringify(resObj[prop]));
             newCell.appendChild(text1);
             newRow.appendChild(newCell);
-            newTable.appendChild(newRow);
+            
         }
-        
+        newTable.appendChild(newRow);
 
     }).catch((rej) => {console.log(rej)});
 };
