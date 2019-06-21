@@ -92,8 +92,9 @@ function findACondition(){
             let text1 = document.createTextNode(JSON.stringify(resObj[prop]));
             newCell.appendChild(text1);
             newRow.appendChild(newCell);
+            newTable.appendChild(newRow);
         }
-        newTable.appendChild(newRow);
+        
 
     }).catch((rej) => {console.log(rej)});
 };

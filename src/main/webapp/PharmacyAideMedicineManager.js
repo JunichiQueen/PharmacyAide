@@ -93,8 +93,9 @@ function findAMedicine(){
             let text1 = document.createTextNode(resObj[prop]);
             newCell.appendChild(text1);
             newRow.appendChild(newCell);
+            newTable.appendChild(newRow);
         }
-        newTable.appendChild(newRow);
+        
 
     }).catch((rej) => {console.log(rej)});
 }
