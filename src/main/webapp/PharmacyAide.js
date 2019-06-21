@@ -72,7 +72,7 @@ function findACondition(){
 
         let headerFlag = false;
 
-        for (let prop in resObj[i]){
+        for (let prop in resObj){
             if (headerFlag == false){
                 let firstRow = document.createElement("tr");
                 let h1 = document.createElement("th");
@@ -89,7 +89,7 @@ function findACondition(){
             }
             let newRow = document.createElement("tr");
             let newCell = document.createElement("td");
-            let text1 = document.createTextNode(resObj[i][prop]);
+            let text1 = document.createTextNode(resObj[prop]);
             newCell.appendChild(text1);
             newRow.appendChild(newCell);
         }
