@@ -1,4 +1,4 @@
-package com.qs.business;
+package com.qa.business;
 
 import javax.inject.Inject;
 
@@ -11,6 +11,7 @@ public class ConditionServiceImpl implements ConditionService{
 
 	@Override
 	public String getAllConditions() {
+		
 		return conRepo.getAllConditions();
 	}
 

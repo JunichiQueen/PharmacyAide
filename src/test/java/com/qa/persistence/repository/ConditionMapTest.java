@@ -1,4 +1,4 @@
-package com.qa.MapTests;
+package com.qa.persistence.repository;
 
 import static org.junit.Assert.*;
 

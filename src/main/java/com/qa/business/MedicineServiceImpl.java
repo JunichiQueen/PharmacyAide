@@ -1,4 +1,4 @@
-package com.qs.business;
+package com.qa.business;
 
 import javax.inject.Inject;
 

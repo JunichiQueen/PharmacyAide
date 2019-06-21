@@ -1,4 +1,4 @@
-package com.qa.ConditionDBTest;
+package com.qa.persistence.repository;
 
 import static org.junit.Assert.*;
 
@@ -70,7 +70,9 @@ public class ConditionDBTest {
 		List<Condition> conditionList = new ArrayList<Condition>();
 
 		conditionList.add(new Condition(1, "Cholera"));
+		
 		Mockito.when(manager.find(Condition.class, 1)).thenReturn(conditionList.get(0));
+		
 		assertEquals(MOCK_OBJECT, conDBRepo.findCondition(1));
 	}
 

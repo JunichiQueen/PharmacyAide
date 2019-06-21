@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import com.qs.business.MedicineService;
+import com.qa.business.MedicineService;
 
 @Path("medicine")
 public class MedicineController {
