@@ -12,14 +12,20 @@
         </div>
 
         <div class="jumbotron bg-secondary">
-                <h3>ID: <input id = "IDinput" type = "text" placeholder = "Enter ID"></input></h3>
-                <h3>Condition: <input id = "Conditioninput" type = "text" placeholder = "Enter Condition Name"></input></h3>
-                <button onclick = "getAllConditions()" class = "btn btn-outline-success">Display All Conditions</button>
-                <button onclick = "findACondition()" class = "btn btn-outline-success">Display A Condition</button>
-                <button onclick = "addCondition()" class = "btn btn-outline-dark">Add Condition</button>
-                <button onclick = "deleteACondition()" class = "btn btn-outline-danger">Delete Condition</button>
-                <button onclick = "updateCondition()" class = "btn btn-outline-warning">Update Condition</button>
+            <p>For information on conditions treatable by this Pharmacy and the treatments we provide for them.</p>
+            <button onclick = "getAllConditions()" class = "btn btn-outline-success">Display All Conditions</button>
+            <button onclick="getAllMedicines()" class = "btn btn-outline-success">Display All Drugs</button>
+                
             
+        </div>
+
+        <div class="jumbotron bg-secondary">
+            <p>Find available medicines for a given condition. Please enter the relevant ID number.</p>
+            <h3>ID: <input id = "conIDinput" type = "text" placeholder = "Enter ID"></input></h3>
+            <button onclick = "findACondition()" class = "btn btn-outline-success">Display A Condition</button>
+            <button onclick="findAMedicine()" class = "btn btn-outline-success">Display A Drug</button>
+
+
         </div>
 
         <button type="button" onclick="window.open('35.232.167.206:8888/PharmacyAide/PharmacyAideMedicineManager.html', '_blank');">View Medicine Manager</button>

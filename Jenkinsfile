@@ -22,17 +22,6 @@ pipeline{
                                 sh "mvn package"
                         }
                 }
-		stage('--sonar--'){
-                        steps{
-                                sh "mvn sonar:sonar"
-                        }
-                }
-		stage('--surefire--'){
-                        steps{
-                                sh "mvn surefire-report:report"
-				sh "mvn site"
-                        }
-                }
 		stage('--deploy--'){
                         steps{
                                 sh "cd /"
