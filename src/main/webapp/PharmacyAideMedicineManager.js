@@ -19,7 +19,7 @@ function newRequest(method, url, body) {
 
 
 function getAllMedicines(){
-    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/medicine/getAllMedicines").then((res) => {
+    newRequest("GET", "http://35.222.149.127:8888/PharmacyAide/api/medicine/getAllMedicines").then((res) => {
         let resObj = JSON.parse(res.responseText);
         let arrayLength = resObj.length;
 
@@ -64,7 +64,7 @@ function getAllMedicines(){
 
 function findAMedicine(){
     let x = document.getElementById("IDinput").value;
-    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/medicine/findAMedicine/" + x).then((res) => {
+    newRequest("GET", "http://35.222.149.127:8888/PharmacyAide/api/medicine/findAMedicine/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -74,7 +74,7 @@ function findAMedicine(){
 function addMedicine(){
     let drugName = document.getElementById("druginput").value;
     let newString = " {drugName:" + drugName + "}";
-    newRequest("POST", "http://35.232.167.206:8888/PharmacyAide/api/medicine/addMedicine", newString).then((res) => {
+    newRequest("POST", "http://35.222.149.127:8888/PharmacyAide/api/medicine/addMedicine", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -83,7 +83,7 @@ function addMedicine(){
 
 function deleteMedicine() {
     let x = document.getElementById("IDinput").value;
-    newRequest("DELETE", "http://35.232.167.206:8888/PharmacyAide/api/medicine/deleteMedicine/" + x).then((res) => {
+    newRequest("DELETE", "http://35.222.149.127:8888/PharmacyAide/api/medicine/deleteMedicine/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -94,7 +94,7 @@ function updateMedicine() {
     let x = document.getElementById("IDinput").value;
     let drugName = document.getElementById("druginput").value;
     let newString = " {drugName:" + drugName + "}";
-    newRequest("PUT", "http://35.232.167.206:8888/PharmacyAide/api/medicine/updateMedicine/" + x, newString).then((res) => {
+    newRequest("PUT", "http://35.222.149.127:8888/PharmacyAide/api/medicine/updateMedicine/" + x, newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);

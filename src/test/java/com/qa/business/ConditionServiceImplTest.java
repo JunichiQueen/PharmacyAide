@@ -33,14 +33,14 @@ public class ConditionServiceImplTest {
 	@Test
 	public void getAllConditionsTest() {
 		
-		Mockito.when(conRepo.getAllConditions()).thenReturn("[{\"ID\":1,\"conditionName\":\"Cholera\",\"medicineList\":[]}]");
+		Mockito.when(conRepo.getAllConditions()).thenReturn(MOCK_ARRAY);
 		
 		assertEquals(MOCK_ARRAY, conSerImpl.getAllConditions());
 	}
 	
 	@Test
 	public void findConditionTest() {
-		Mockito.when(conRepo.findCondition(1)).thenReturn("{\"ID\":1,\"conditionName\":\"Cholera\",\"medicineList\":[]}");
+		Mockito.when(conRepo.findCondition(1)).thenReturn(MOCK_OBJECT);
 		assertEquals(MOCK_OBJECT, conSerImpl.findACondition(1));
 	}
 	

@@ -18,7 +18,7 @@ function newRequest(method, url, body) {
 };
 
 function getAllConditions(){
-    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/condition/getAllConditions").then((res) => {
+    newRequest("GET", "http://35.222.149.127:8888/PharmacyAide/api/condition/getAllConditions").then((res) => {
         let resObj = JSON.parse(res.responseText);
         let arrayLength = resObj.length;
 
@@ -63,7 +63,7 @@ function getAllConditions(){
 
 function findACondition(){
     let x = document.getElementById("IDinput").value;
-    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/condition/findACondition/" + x).then((res) => {
+    newRequest("GET", "http://35.222.149.127:8888/PharmacyAide/api/condition/findACondition/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -73,7 +73,7 @@ function findACondition(){
 function addCondition(){
     let JSONString = document.getElementById("Conditioninput").value;
     let newString = " {conditionName:" + JSONString + "}";
-    newRequest("POST", "http://35.232.167.206:8888/PharmacyAide/api/condition/addCondition", newString).then((res) => {
+    newRequest("POST", "http://35.222.149.127:8888/PharmacyAide/api/condition/addCondition", newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -82,7 +82,7 @@ function addCondition(){
 
 function deleteACondition() {
     let x = document.getElementById("IDinput").value;
-    newRequest("DELETE", "http://35.232.167.206:8888/PharmacyAide/api/condition/deleteCondition/" + x).then((res) => {
+    newRequest("DELETE", "http://35.222.149.127:8888/PharmacyAide/api/condition/deleteCondition/" + x).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
@@ -93,7 +93,7 @@ function updateCondition() {
     let x = document.getElementById("IDinput").value;
     let JSONString = document.getElementById("Conditioninput").value;
     let newString = " {conditionName:" + JSONString + "}";
-    newRequest("PUT", "http://35.232.167.206:8888/PharmacyAide/api/condition/updateCondition/" + x, newString).then((res) => {
+    newRequest("PUT", "http://35.222.149.127:8888/PharmacyAide/api/condition/updateCondition/" + x, newString).then((res) => {
         let createText = document.createElement("p");
         createText.innerText = res.responseText;
         document.getElementById("display").appendChild(createText);
