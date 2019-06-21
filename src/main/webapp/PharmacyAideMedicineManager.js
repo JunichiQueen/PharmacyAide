@@ -62,6 +62,15 @@ function getAllMedicines(){
     }).catch((rej) => {console.log(rej)});
 }
 
+function findAMedicine(){
+    let x = document.getElementById("IDinput").value;
+    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/medicine/findAMedicine/" + x).then((res) => {
+        let createText = document.createElement("p");
+        createText.innerText = res.responseText;
+        document.getElementById("display").appendChild(createText);
+    }).catch((rej) => {console.log(rej)});
+}
+
 function addMedicine(){
     let drugName = document.getElementById("druginput").value;
     let newString = " {drugName:" + drugName + "}";

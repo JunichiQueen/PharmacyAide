@@ -61,6 +61,15 @@ function getAllConditions(){
     }).catch((rej) => {console.log(rej)});
 };
 
+function findACondition(){
+    let x = document.getElementById("IDinput").value;
+    newRequest("GET", "http://35.232.167.206:8888/PharmacyAide/api/condition/findACondition/" + x).then((res) => {
+        let createText = document.createElement("p");
+        createText.innerText = res.responseText;
+        document.getElementById("display").appendChild(createText);
+    }).catch((rej) => {console.log(rej)});
+}
+
 function addCondition(){
     let JSONString = document.getElementById("Conditioninput").value;
     let newString = " {conditionName:" + JSONString + "}";
