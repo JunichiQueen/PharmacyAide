@@ -27,6 +27,7 @@ pipeline{
                                 sh "cd /"
 				sh "pwd"
 				sh "sudo cp /var/lib/jenkins/workspace/PipeMain/target/PharmacyAide.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
+				sh "sudo sh /var/lib/wildfly-10.1.0.Final/bin/standalone.sh"
                         }
                 }
         }
