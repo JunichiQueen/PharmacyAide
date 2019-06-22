@@ -2,8 +2,6 @@ package com.qa.business;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +11,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.qa.business.ConditionServiceImpl;
-import com.qa.persistence.domain.Condition;
 import com.qa.persistence.repository.ConditionRepository;
 
 @RunWith(MockitoJUnitRunner.class)

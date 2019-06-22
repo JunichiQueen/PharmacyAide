@@ -31,11 +31,11 @@ public class MedicineController {
 		return medSer.findAMedicine(id);
 	}
 	
-	@Path("addMedicine")
+	@Path("addMedicine/{id}/{stock}")
 	@POST
 	@Produces({ "application/json" })
-	public String addMedicine(String drugName) {
-		return medSer.addMedicine(drugName);
+	public String addMedicine(@PathParam("id") int id,  @PathParam("stock") int stock, String drugName) {
+		return medSer.addMedicine(id, drugName, stock);
 	}
 	
 	@Path("deleteMedicine/{id}")

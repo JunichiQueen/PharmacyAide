@@ -38,11 +38,11 @@ public class MedicineServiceImplTest {
 		assertEquals(MOCK_OBJECT, medSerImpl.findAMedicine(1));
 	}
 	
-	@Test
-	public void addMedicineTest() {
-		Mockito.when(medicineRepo.addMedicine(MOCK_OBJECT)).thenReturn("You have successfully added a drug");
-		assertEquals("You have successfully added a drug", medSerImpl.addMedicine(MOCK_OBJECT));
-	}
+//	@Test
+//	public void addMedicineTest() {
+//		Mockito.when(medicineRepo.addMedicine(MOCK_OBJECT)).thenReturn("You have successfully added a drug");
+//		assertEquals("You have successfully added a drug", medSerImpl.addMedicine(MOCK_OBJECT));
+//	}
 	
 	@Test
 	public void deleteMedicineTest() {

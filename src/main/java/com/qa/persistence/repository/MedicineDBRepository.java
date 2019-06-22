@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import com.qa.persistence.domain.Condition;
 import com.qa.persistence.domain.Medicine;
 import com.qa.util.JSONUtil;
 
@@ -39,10 +40,13 @@ public class MedicineDBRepository implements MedicineRepository {
 
 	@Override
 	@Transactional(REQUIRED)
-	public String addMedicine(String drugName) {
-		Medicine newMedicine = new JSONUtil().getObjectForJSON(drugName, Medicine.class);
-		manager.persist(newMedicine);
-		return "You have successfully added a drug";
+	public String addMedicine(int id, String drugName, int stock) {
+	 Medicine newDrugName = new JSONUtil().getObjectForJSON(drugName, Medicine.class);
+	 newDrugName.setStock(stock);
+	 Condition newCondition = manager.find(Condition.class, id);
+	 newCondition.getMedicineList().add(newDrugName);
+	 manager.persist(newCondition);
+	 return "You have successfully added a drug";
 	}
 
 	@Override

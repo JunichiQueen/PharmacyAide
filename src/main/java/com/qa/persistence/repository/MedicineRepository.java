@@ -4,7 +4,7 @@ public interface MedicineRepository {
 	
 	String getAllMedicines();
 	String findMedicine(int id);
-	String addMedicine(String drugName);
+	String addMedicine(int id, String drugName, int stock);
 	String deleteMedicine(int id);
 	String updateMedicine(int id, String drugName);
 

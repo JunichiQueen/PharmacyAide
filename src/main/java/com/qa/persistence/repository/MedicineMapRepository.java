@@ -27,7 +27,7 @@ public class MedicineMapRepository implements MedicineRepository{
 	}
 
 	@Override
-	public String addMedicine(String drugName) {
+	public String addMedicine(int id, String drugName, int stock) {
 		Medicine newMedicine = new JSONUtil().getObjectForJSON(drugName, Medicine.class);
 		medicineMap.put(medicineMap.size() + 1, newMedicine);
 		return "You have successfully added a drug";

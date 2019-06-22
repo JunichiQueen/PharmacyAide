@@ -20,8 +20,8 @@ public class MedicineServiceImpl implements MedicineService {
 	}
 
 	@Override
-	public String addMedicine(String drugName) {
-		return medicineRepo.addMedicine(drugName);
+	public String addMedicine(int id, String drugName, int stock) {
+		return medicineRepo.addMedicine(id, drugName, stock);
 	}
 
 	@Override

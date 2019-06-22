@@ -16,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.qa.persistence.domain.Condition;
 import com.qa.persistence.domain.Medicine;
 import com.qa.persistence.repository.MedicineDBRepository;
 import com.qa.util.JSONUtil;
@@ -51,24 +50,22 @@ public class MedicineDBTest {
 		List<Medicine> medicineList = new ArrayList<Medicine>();
 		medicineList.add(new Medicine(1, "Statin", 20));
 		Mockito.when(query.getResultList()).thenReturn(medicineList);
-		System.out.println(medDBRepo.getAllMedicines());
-		assertEquals("[{\"id\":1,\"drugName\":\"Statin\",\"stock\":20}]", medDBRepo.getAllMedicines());
+		assertEquals(MOCK_ARRAY, medDBRepo.getAllMedicines());
 	}
 	
 	@Test
 	public void findAMedicineDBTest() {
 		List<Medicine> medicineList = new ArrayList<Medicine>();
-
 		medicineList.add(new Medicine(1, "Statin", 20));
 		Mockito.when(manager.find(Medicine.class, 1)).thenReturn(medicineList.get(0));
 		assertEquals(MOCK_OBJECT, medDBRepo.findMedicine(1));
 	}
 	
-	@Test
-	public void addAMedicineDBTest() {
-		String reply = medDBRepo.addMedicine(MOCK_OBJECT);
-		assertEquals("You have successfully added a drug", reply);
-	}
+//	@Test
+//	public void addAMedicineDBTest() {
+//		String reply = medDBRepo.addMedicine(MOCK_OBJECT);
+//		assertEquals("You have successfully added a drug", reply);
+//	}
 	
 	@Test
 	public void deleteMedicineDBTest() {

@@ -37,13 +37,6 @@ public class ConditionDBRepository implements ConditionRepository{
 	public String findCondition(int id) {
 		return json.getJSONForObject(manager.find(Condition.class, id));
 	}
-	
-//	@Override
-//	public String findConditionByName(String conditionName) {
-//		Query query = manager.createQuery("SELECT c FROM Condition c WHERE c.conditionName = :" + conditionName + "");
-//		Collection<Condition> conditions = (Collection<Condition>) query.getResultList();
-//		return json.getJSONForObject(conditions);
-//	}
 		 
 	@Override
 	@Transactional(REQUIRED)

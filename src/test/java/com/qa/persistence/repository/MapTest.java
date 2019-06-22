@@ -11,7 +11,7 @@ import com.qa.persistence.repository.ConditionMapRepository;
 import com.qa.persistence.repository.MedicineMapRepository;
 import com.qa.util.JSONUtil;
 
-public class ConditionMapTest {
+public class MapTest {
 	
 	ConditionMapRepository conditionMapRepo;
 	MedicineMapRepository medicineMapRepo;
@@ -52,7 +52,6 @@ public class ConditionMapTest {
 	public void addConditionTest() {
 		Condition con1 = new Condition(1, "Salmonellosis");
 		String jsonString = json.getJSONForObject(con1);
-		//System.out.println(jsonString);
 		conditionMapRepo.addCondition(jsonString);
 		assertEquals(1, conditionMapRepo.getConditionMap().size());
 		assertEquals("You have successfully added a condition", conditionMapRepo.addCondition(jsonString));
@@ -78,7 +77,6 @@ public class ConditionMapTest {
 		conditionMapRepo.getConditionMap().put(1, con1);
 		conditionMapRepo.getConditionMap().put(2, con2);
 		conditionMapRepo.updateCondition(1, jsonString);
-		//System.out.println(jsonString);
 		assertEquals("Headache", conditionMapRepo.getConditionMap().get(1).getConditionName());
 	}
 	
@@ -102,20 +100,18 @@ public class ConditionMapTest {
 		Medicine med2 = new Medicine(2, "Lemsip", 45);
 		medicineMapRepo.getMedicineMap().put(1, med1);
 		medicineMapRepo.getMedicineMap().put(2, med2);
-		//System.out.println(medicineMapRepo.findMedicine(1));
 		assertEquals("{\"id\":1,\"drugName\":\"Paracetamol\",\"stock\":30}", medicineMapRepo.findMedicine(1));
 	}
 	
-	@Test
-	public void addMedicineTest() {
-		Medicine med1 = new Medicine(1, "Paracetamol", 30);
-		String drugString = json.getJSONForObject(med1);
-		//System.out.println(drugString);
-		medicineMapRepo.addMedicine(drugString);
-		assertEquals(1, medicineMapRepo.getMedicineMap().size());
-		assertEquals("You have successfully added a drug", medicineMapRepo.addMedicine(drugString));
-		
-	}
+//	@Test
+//	public void addMedicineTest() {
+//		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+//		String drugString = json.getJSONForObject(med1);
+//		medicineMapRepo.addMedicine(drugString);
+//		assertEquals(1, medicineMapRepo.getMedicineMap().size());
+//		assertEquals("You have successfully added a drug", medicineMapRepo.addMedicine(drugString));
+//		
+//	}
 	
 	@Test
 	public void deleteMedicineTest() {

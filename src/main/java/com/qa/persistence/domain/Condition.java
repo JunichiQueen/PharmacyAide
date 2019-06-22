@@ -10,8 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -29,15 +27,7 @@ public class Condition {
 		this.ID = ID;
 		this.conditionName = conditionName;
 	}
-	
-	public Condition(int iD, String conditionName, List<Medicine> medicineList) {
-		super();
-		ID = iD;
-		this.conditionName = conditionName;
-		this.medicineList = medicineList;
-	}
-
-	
+		
 	public Condition() {
 		
 	}
