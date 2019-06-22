@@ -26,6 +26,7 @@ pipeline{
                         steps{
                                 sh "cd /"
 				sh "pwd"
+				sh "sudo sh /var/lib/wildfly-10.1.0.Final/bin/standalone.sh"
 				sh "sudo cp /var/lib/jenkins/workspace/testpipeline/target/PharmacyAide.war /var/lib/wildfly-10.1.0.Final/standalone/deployments/"
                         }
                 }
