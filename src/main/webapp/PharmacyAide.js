@@ -29,7 +29,6 @@ function getAllConditions(){
         let headerFlag = false;
 
         for (let i=0; i<arrayLength; i++){
-
             if (headerFlag == false){
                 let firstRow = document.createElement("tr");
                 let h1 = document.createElement("th");
@@ -46,18 +45,14 @@ function getAllConditions(){
             }
             let newRow = document.createElement("tr");
             
-
             for (let prop in resObj[i]){
                 let newCell = document.createElement("td");
                 let text1 = document.createTextNode(JSON.stringify(resObj[i][prop]));
                 newCell.appendChild(text1);
                 newRow.appendChild(newCell);
-
             }
-            
             newTable.appendChild(newRow);
         }
-
     }).catch((rej) => {console.log(rej)});
 };
 

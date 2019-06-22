@@ -52,13 +52,9 @@ function updateCondition() {
 
 function addMedicine(){
     let conditionID = document.getElementById("conIDinput2").value;
-    console.log(conditionID);
     let stock = document.getElementById("stock").value;
-    console.log(stock);
     let newPath = conditionID + "/" + stock + "/";
-    console.log(newPath);
     let drugName = document.getElementById("druginput").value;
-    console.log(drugName);
     let newString = " {drugName:" + drugName + "}";
     newRequest("POST", "http://35.222.149.127:8888/PharmacyAide/api/medicine/addMedicine/" + newPath, newString).then((res) => {
         let createText = document.createElement("p");
