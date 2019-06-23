@@ -59,8 +59,6 @@ public class ConditionDBTest {
 		
 		Mockito.when(query.getResultList()).thenReturn(conditionList);
 		
-		//System.out.println(conDBRepo.getAllConditions());
-		
 		assertEquals(MOCK_ARRAY, conDBRepo.getAllConditions());
 	}
 	

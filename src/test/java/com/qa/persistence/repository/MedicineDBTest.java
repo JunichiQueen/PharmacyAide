@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.qa.persistence.domain.Condition;
 import com.qa.persistence.domain.Medicine;
 import com.qa.persistence.repository.MedicineDBRepository;
 import com.qa.util.JSONUtil;
@@ -30,12 +31,28 @@ public class MedicineDBTest {
 
 	@Mock
 	private Query query;
+	
+	@Mock
+	Medicine newMedicine;
+	
+	@Mock
+	Condition newCondition;
+	
+	@Mock
+	List<Medicine> medicineList2 = new ArrayList<Medicine>();
 
 	private JSONUtil json;
 	
 	private static final String MOCK_ARRAY = "[{\"id\":1,\"drugName\":\"Statin\",\"stock\":20}]";
 	
 	private static final String MOCK_OBJECT = "{\"id\":1,\"drugName\":\"Statin\",\"stock\":20}";
+	
+	private static final int MOCK_ID = 1;
+	
+	private static final String MOCK_DRUGNAME = "{drugName: Roids}";
+	
+	private static final int MOCK_STOCK = 50;
+	
 
 	@Before
 	public void setup() {
@@ -61,11 +78,17 @@ public class MedicineDBTest {
 		assertEquals(MOCK_OBJECT, medDBRepo.findMedicine(1));
 	}
 	
-//	@Test
-//	public void addAMedicineDBTest() {
-//		String reply = medDBRepo.addMedicine(MOCK_OBJECT);
-//		assertEquals("You have successfully added a drug", reply);
-//	}
+	@Test
+	public void addAMedicineDBTest() {
+		List<Condition> conditionList = new ArrayList<Condition>();
+		conditionList.add(new Condition(1, "Cholera"));
+		Mockito.when(json.getObjectForJSON(MOCK_DRUGNAME, Medicine.class)).thenReturn(newMedicine);
+		newMedicine.setStock(MOCK_STOCK);
+		Mockito.when(manager.find(Condition.class, 1)).thenReturn(newCondition);
+		newCondition.getMedicineList().add(newMedicine);
+		String reply = medDBRepo.addMedicine(MOCK_ID, MOCK_DRUGNAME, MOCK_STOCK);
+		assertEquals("You have successfully added a drug", reply);
+	}
 	
 	@Test
 	public void deleteMedicineDBTest() {

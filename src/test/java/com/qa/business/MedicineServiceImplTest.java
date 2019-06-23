@@ -25,6 +25,11 @@ public class MedicineServiceImplTest {
 	
 	private static final String MOCK_OBJECT = "{\"id\":1,\"drugName\":\"Statin\",\"stock\":20}";
 
+	private static final int MOCK_ID = 1;
+	
+	private static final String MOCK_DRUGNAME = "{drugName: Roids}";
+	
+	private static final int MOCK_STOCK = 50;
 	
 	@Test
 	public void getAllMedicinesTest() {
@@ -38,11 +43,11 @@ public class MedicineServiceImplTest {
 		assertEquals(MOCK_OBJECT, medSerImpl.findAMedicine(1));
 	}
 	
-//	@Test
-//	public void addMedicineTest() {
-//		Mockito.when(medicineRepo.addMedicine(MOCK_OBJECT)).thenReturn("You have successfully added a drug");
-//		assertEquals("You have successfully added a drug", medSerImpl.addMedicine(MOCK_OBJECT));
-//	}
+	@Test
+	public void addMedicineTest() {
+		Mockito.when(medicineRepo.addMedicine(MOCK_ID, MOCK_DRUGNAME, MOCK_STOCK)).thenReturn("You have successfully added a drug");
+		assertEquals("You have successfully added a drug", medSerImpl.addMedicine(MOCK_ID, MOCK_DRUGNAME, MOCK_STOCK));
+	}
 	
 	@Test
 	public void deleteMedicineTest() {
