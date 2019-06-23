@@ -24,7 +24,7 @@ pipeline{
                 }
 		stage('--sonar--'){
                         steps{
-                                sh "mvn sonar:sonar"
+                                sh "sudo mvn sonar:sonar"
                         }
                 }
 		stage('--verify--'){
