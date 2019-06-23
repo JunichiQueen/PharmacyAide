@@ -9,7 +9,7 @@ pipeline{
 
 		stage('---clean---'){
                         steps{
-                                sh "mvn clean"
+                                sh "sudo mvn clean"
                         }
                 }
                 stage('--test--'){
