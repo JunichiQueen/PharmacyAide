@@ -103,15 +103,15 @@ public class MapTest {
 		assertEquals("{\"id\":1,\"drugName\":\"Paracetamol\",\"stock\":30}", medicineMapRepo.findMedicine(1));
 	}
 	
-//	@Test
-//	public void addMedicineTest() {
-//		Medicine med1 = new Medicine(1, "Paracetamol", 30);
-//		String drugString = json.getJSONForObject(med1);
-//		medicineMapRepo.addMedicine(drugString);
-//		assertEquals(1, medicineMapRepo.getMedicineMap().size());
-//		assertEquals("You have successfully added a drug", medicineMapRepo.addMedicine(drugString));
-//		
-//	}
+	@Test
+	public void addMedicineTest() {
+		Medicine med1 = new Medicine(1, "Paracetamol", 30);
+		String drugString = json.getJSONForObject(med1);
+		medicineMapRepo.addMedicine(1, drugString, 30);
+		assertEquals(1, medicineMapRepo.getMedicineMap().size());
+		assertEquals("You have successfully added a drug", medicineMapRepo.addMedicine(1, drugString, 30));
+		
+	}
 	
 	@Test
 	public void deleteMedicineTest() {
